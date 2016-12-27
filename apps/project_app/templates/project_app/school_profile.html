@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+
+    $(document).ready(function() {
+        // var city_url=$('input[name="city_name"]').val().replace( /\s/g, ""); //match all white space(global) and replace with "" no space
+        var school_name=$('input[name="school_name"]').val();
+        // api_key="&api_key=BqnSd2SIBDqAoMR8Cv1hHNCQcKd4z9TzShqo4jTj"
+         $.get("https://api.data.gov/ed/collegescorecard/v1/schools?school.name=Boston University&api_key=BqnSd2SIBDqAoMR8Cv1hHNCQcKd4z9TzShqo4jTj", function(res) {
+              var array = res.results[0][2014]
+              var tuition = res.results[0][2014].cost.tuition.in_state
+              var school_name = res.results[0].school.name
+              var location = res.results[0].school.city + ", " + res.results[0].school.state
+              var results = res.results[0][2014].student.size
+              // var scholarships = res.results[0][2014].cost.scholarships
+              // var financial_aid =
+              console.log(results)
+              // $('.city_weather').append(`<h2>${city_heading}</h2><br/><img src=${icon_url}<p>${temp}&#8451;</p>`);
+              // console.log (`<p>${school_name}</p>`)
+              $('.school_info').append(`<p>School Name: ${school_name}</p><p>Tuition: $ ${tuition}</p>`);
+          }, 'json');
+          return false;
+      }); //end of document.ready
+    </script>
+  </head>
+
+  <body>
+    School Profile
+    <div class="school_info"></div>
+  </body>
+
+</html>
