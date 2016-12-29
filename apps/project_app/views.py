@@ -12,7 +12,6 @@ def index(request):
 def school_list_process(request):
     school_name = request.POST["school_name"]
     # url = "https://api.data.gov/ed/collegescorecard/v1/schools?&api_key=BqnSd2SIBDqAoMR8Cv1hHNCQcKd4z9TzShqo4jTj"
-
     url = 'https://api.data.gov/ed/collegescorecard/v1/schools'
 
     #Format Try 1
