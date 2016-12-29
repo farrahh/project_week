@@ -8,6 +8,9 @@
     <link href="{% static 'project_app/css/cover.css' %}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'project_app/css/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'project_app/css/styles.css' %}">
+    <script src="https://use.typekit.net/iii7xtz.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
     <script src="external/jquery/jquery.js"></script>
     <script src="jquery-ui.min.js"></script>
@@ -45,7 +48,7 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Cover</h3>
+              <h3 class="masthead-brand">College Search</h3>
               <nav class="nav nav-masthead">
                 <a class="nav-link" href="#">Features</a>
                 <a class="nav-link" href="#">Contact</a>
@@ -67,16 +70,14 @@
             {% csrf_token %}
             <div id="accordion">
               <h3>School Name</h3>
-                <div>Select a school <input style="width: 500px" type="text" name="school_name" placeholder="e.g., John Hopkins University"></div>
+              <input type="text" name="school_name" placeholder="e.g., John Hopkins University">
                 <h3>Acceptance</h3>
-                <div>
-                  <p>GPA range: <input type="text" name="GPA"></p>
-                  <p>SAT range: <input type="text" name="SAT"></p>
-                </div>
+                <p><input type="text" name="GPA" placeholder="GPA Range"></p>
+                <p><input type="text" name="SAT" placeholder="SAT Scores Range"></p>
                 <h3>Location</h3>
-                <div>
+                <div class="scrollable-menu">
                   State:
-                  <select name="state" id="state">
+                  <select name="state" id="state" onmousedown="if(this.options.length>10){this.size=10;}" onchange='this.size=0;' onblur="this.size=0;">
                   <option value="None">None</option>
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
@@ -130,11 +131,11 @@
                   <option value="WI">Wisconsin</option>
                   <option value="WY">Wyoming</option>
                 </select>
-                <p>Enter Zip Code : <input type="number" name="zip_code"></p>
-                <p>Enter a Radius : <input type="number" name="radius"></p>
+                <input type="number" name="zip_code" placeholder="Enter Zip Code">
+                <input type="number" name="radius" placeholder="Enter a Radius">
+                <input type="submit" value="Find Schools">
               </div>
             </div>
-            <input type="submit" value="Find Schools">
           </form>
         </div>
 
